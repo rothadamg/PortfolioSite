@@ -278,10 +278,10 @@ var links = [
                   .attr("y2", function (d) { return d.target.y; });
 
                 // Translate the groups
-                gnodes.attr("transform", function (d) {
-                    return 'translate(' + [d.x, d.y] + ')';
+			gnodes.attr("cx", function(d) { return d.x; })
+				.attr("cy", function(d) { return d.y; });
                 });
 
-            });
+
 
     </script>

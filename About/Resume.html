@@ -21,6 +21,22 @@
       <title>Adam G. Roth Resume</title>
   </head>
 <body class="main">
+    <!-- Google Tag Manager -->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-PKDPHJ"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+            '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PKDPHJ');
+    </script>
+    <!-- End Google Tag Manager -->
 <div class="loader"><div class="align-loader"><div class="loader6"></div></div></div>	
 	<header>
 	   <div class="navigation">
@@ -102,7 +118,7 @@
             <div class="col-lg-4 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-3 col-xs-12">
                 <div class="team-col">
                     <iframe src="Content/NetworkGraphFirstResume.html" scrolling="no" height="476" width="476"></iframe>
-                    <h2>Undergraduate Resume (2008)</h2>
+                    <h2>2008 Resume</h2>
                     <div class="price-ul">
                         <a href="Content/NetworkGraphFirstResume.html" target="_blank" class="main-button-sq bg-dark-main">Open in New Window</a>
                     </div>
@@ -111,7 +127,7 @@
             <div class="col-lg-4 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-3 col-xs-12">
                 <div class="team-col">
                     <iframe src="Content/NetworkGraphSecondResume.html" scrolling="no" height="476" width="476"></iframe>
-                    <h2>Graduate Resume (2012)</h2>
+                    <h2>2012 Resume</h2>
                     <div class="price-ul">
                         <a href="Content/NetworkGraphSecondResume.html" target="_blank" class="main-button-sq bg-dark-main">Open in New Window</a>
                     </div>                    
@@ -120,7 +136,7 @@
             <div class="col-lg-4 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-3 col-xs-12">
                 <div class="team-col">
                     <iframe src="Content/NetworkGraphThirdResume.html" scrolling="no" height="476" width="476"></iframe>
-                    <h2>Professional Resume (2015)</h2>\
+                    <h2>2015 Resume</h2>\
                     <div class="price-ul">
                         <a href="Content/NetworkGraphThirdResume.html" target=:_blank" class="main-button-sq bg-dark-main">Open in New Window</a>
                         <a href="Content/resumes/Roth_Adam_Resume.pdf" target="_blank" class="main-button-sq bg-dark-main">View Full Resume</a>
@@ -146,61 +162,55 @@
      
     <div class="container" id="D3 Examples">
         <h2>More D3 Examples</h2>
-        <table class="table">
-            <tr>
-                <th>
+		<p>Click the images to open interactive versions in new window</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-12 col-xs-12">
                     <h2>Edge Bundle</h2>
 					<a href="Content/PAReviewEx.html" target="_blank">
                     <p>
-                        <img src="Content/edgebundle.png" alt="Edge Bundle Graph" style="width:200px;height:200px;">
+                        <img src="Content/edgebundle.png" alt="Edge Bundle Graph" style="width:350px;height:350px;">
                     </p>
 					</a>
                     <p>
                         <asp:button text="Generate" runat="server" onclick="Edge_Bundle_Web_Service" onclientclick="window.open('Content/EdgeBundleHighlight.html');" />
                     </p>
-                </th>
-                <th>
-                    <h2>Network Graph</h2>
-                    <p>
-                        <img src="Content/NetworkBlue.png" alt="Network" style="width:200px;height:200px;">
-                    </p>
-                    <p>
-                        <asp:button text="Generate" runat="server" onclick="Network_Graph_Web_Service" onclientclick="window.open('Content/NetworkGraph.html');" />
-                    </p>
-                </th>
-                <th>
+                </div>
+                <div class="col-md-4 col-sm-12 col-xs-12">
                     <h2>Word Cloud</h2>
+					<a href="Content/Wordcloud.html" target=:"_blank">
                     <p>
-                        <img src="Content/WordCloud.png" alt="Word Cloud" style="width:200px;height:200px;">
+                        <img src="Content/WordCloud.png" alt="Word Cloud" style="width:350px;height:350px;">
                     </p>
                     <p>
                         <asp:button text="Generate" runat="server" onclick="Word_Cloud_Web_Service" onclientclick="window.open('Content/WordCloud.html');" />
                     </p>
-                </th>
-            </tr>
-            <tr>
-                <th>
+					</a>
+                </div>
+                <div class="col-md-4 col-sm-12 col-xs-12">
                     <h2>Adjacency Matrix</h2>
+					<a href="Content/adjmatrix.html" target=:"_blank">					
                     <p>
-                        <img src="Content/AdjMatrix.png" alt="Adjacency Matrix" style="width:200px;height:200px;">
+                        <img src="Content/AdjMatrix.png" alt="Adjacency Matrix" style="width:350px;height:350px;">
                     </p>
                     <p>
                         <asp:button text="Generate" runat="server" onclientclick="window.open('Content/adjmatrix.html');" />    <!-- add  OnClick="Adjacency_Matrix_Web_Service" -->
                     </p>
-                </th>
-                <th>
-                    <h2>Network Graph 2</h2>
+					</a>
+                </div>
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                    <h2>Network Graph</h2>
 					<a href="Content/ForceLayout.html" target="_blank">
                     <p>
-                        <img src="Content/Network.png" alt="Network2" style="width:200px;height:200px;">
+                        <img src="Content/Network.png" alt="Network2" style="width:350px;height:350px;">
                     </p>
 					</a>
                     <p>
                         <asp:button text="Generate" runat="server" onclientclick="window.open('Content/NetworkGraph2.html');" />
                     </p>
-                </th>
-            </tr>
-        </table>
+                </div>
+            </div>
+        </div>
 
         <div class="scrollto car-team" id="team">
             <div class="row bg-white">

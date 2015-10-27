@@ -3,207 +3,205 @@
 <meta charset="utf-8">
 <title>Co-occurrence</title>
 <style>
+    @import url(http://fonts.googleapis.com/css?family=PT+Serif|PT+Serif:b|PT+Serif:i|PT+Sans|PT+Sans:b);
 
+    html {
+        min-width: 1040px;
+    }
 
-@import url(http://fonts.googleapis.com/css?family=PT+Serif|PT+Serif:b|PT+Serif:i|PT+Sans|PT+Sans:b);
+    .ocks-org body {
+        background: #fcfcfa;
+        color: #333;
+        font-family: "PT Serif", serif;
+        margin: 1em auto 4em auto;
+        position: relative;
+        width: 960px;
+    }
 
-html {
-  min-width: 1040px;
-}
+    .ocks-org header,
+    .ocks-org footer,
+    .ocks-org aside,
+    .ocks-org h1,
+    .ocks-org h2,
+    .ocks-org h3,
+    .ocks-org h4 {
+        font-family: "PT Sans", sans-serif;
+    }
 
-.ocks-org body {
-  background: #fcfcfa;
-  color: #333;
-  font-family: "PT Serif", serif;
-  margin: 1em auto 4em auto;
-  position: relative;
-  width: 960px;
-}
+    .ocks-org h1,
+    .ocks-org h2,
+    .ocks-org h3,
+    .ocks-org h4 {
+        color: #000;
+    }
 
-.ocks-org header,
-.ocks-org footer,
-.ocks-org aside,
-.ocks-org h1,
-.ocks-org h2,
-.ocks-org h3,
-.ocks-org h4 {
-  font-family: "PT Sans", sans-serif;
-}
+    .ocks-org header,
+    .ocks-org footer {
+        color: #636363;
+    }
 
-.ocks-org h1,
-.ocks-org h2,
-.ocks-org h3,
-.ocks-org h4 {
-  color: #000;
-}
+    h1 {
+        font-size: 64px;
+        font-weight: 300;
+        letter-spacing: -2px;
+        margin: .3em 0 .1em 0;
+    }
 
-.ocks-org header,
-.ocks-org footer {
-  color: #636363;
-}
+    h2 {
+        margin-top: 2em;
+    }
 
-h1 {
-  font-size: 64px;
-  font-weight: 300;
-  letter-spacing: -2px;
-  margin: .3em 0 .1em 0;
-}
+    h1, h2 {
+        text-rendering: optimizeLegibility;
+    }
 
-h2 {
-  margin-top: 2em;
-}
+        h2 a[name],
+        h2 a[id] {
+            color: #2E8B57;
+            right: 100%;
+            padding: 0 .3em;
+            position: absolute;
+        }
 
-h1, h2 {
-  text-rendering: optimizeLegibility;
-}
+    header,
+    footer {
+        font-size: small;
+    }
 
-h2 a[name],
-h2 a[id] {
-  color: #2E8B57;
-  right: 100%;
-  padding: 0 .3em;
-  position: absolute;
-}
+    .ocks-org header aside,
+    .ocks-org footer aside {
+        float: left;
+        margin-right: .5em;
+    }
 
-header,
-footer {
-  font-size: small;
-}
+        .ocks-org header aside:after,
+        .ocks-org footer aside:after {
+            padding-left: .5em;
+            content: "/";
+        }
 
-.ocks-org header aside,
-.ocks-org footer aside {
-  float: left;
-  margin-right: .5em;
-}
+    footer {
+        margin-top: 8em;
+    }
 
-.ocks-org header aside:after,
-.ocks-org footer aside:after {
-  padding-left: .5em;
-  content: "/";
-}
+    h1 ~ aside {
+        font-size: small;
+        right: 0;
+        position: absolute;
+        width: 180px;
+    }
 
-footer {
-  margin-top: 8em;
-}
+    .attribution {
+        font-size: small;
+        margin-bottom: 2em;
+    }
 
-h1 ~ aside {
-  font-size: small;
-  right: 0;
-  position: absolute;
-  width: 180px;
-}
+    body > p, li > p {
+        line-height: 1.5em;
+    }
 
-.attribution {
-  font-size: small;
-  margin-bottom: 2em;
-}
+    body > p {
+        width: 720px;
+    }
 
-body > p, li > p {
-  line-height: 1.5em;
-}
+    body > blockquote {
+        width: 640px;
+    }
 
-body > p {
-  width: 720px;
-}
+    blockquote q {
+        display: block;
+        font-style: oblique;
+    }
 
-body > blockquote {
-  width: 640px;
-}
+    ul {
+        padding: 0;
+    }
 
-blockquote q {
-  display: block;
-  font-style: oblique;
-}
+    li {
+        width: 690px;
+        margin-left: 30px;
+    }
 
-ul {
-  padding: 0;
-}
+    a {
+        color: #2E8B57;
+    }
 
-li {
-  width: 690px;
-  margin-left: 30px;
-}
+        a:not(:hover) {
+            text-decoration: none;
+        }
 
-a {
-  color: #2E8B57;
-}
+    pre, code, textarea {
+        font-family: "Menlo", monospace;
+    }
 
-a:not(:hover) {
-  text-decoration: none;
-}
+    code {
+        line-height: 1em;
+    }
 
-pre, code, textarea {
-  font-family: "Menlo", monospace;
-}
+    textarea {
+        font-size: 10%;
+    }
 
-code {
-  line-height: 1em;
-}
+    body > pre {
+        border-left: solid 2px #ccc;
+        padding-left: 18px;
+        margin: 2em 0 2em -20px;
+    }
 
-textarea {
-  font-size: 100%;
-}
+    .html .value,
+    .javascript .string,
+    .javascript .regexp {
+        color: #756bb1;
+    }
 
-body > pre {
-  border-left: solid 2px #ccc;
-  padding-left: 18px;
-  margin: 2em 0 2em -20px;
-}
+    .html .tag,
+    .css .tag,
+    .javascript .keyword {
+        color: #00FF7F;
+    }
 
-.html .value,
-.javascript .string,
-.javascript .regexp {
-  color: #756bb1;
-}
+    .comment {
+        color: #636363;
+    }
 
-.html .tag,
-.css .tag,
-.javascript .keyword {
-  color: #00FF7F;
-}
+    .html .doctype,
+    .javascript .number {
+        color: #31a354;
+    }
 
-.comment {
-  color: #636363;
-}
+    .html .attribute,
+    .css .attribute,
+    .javascript .class,
+    .javascript .special {
+        color: #e6550d;
+    }
 
-.html .doctype,
-.javascript .number {
-  color: #31a354;
-}
+    svg {
+        font: 10px sans-serif;
+    }
 
-.html .attribute,
-.css .attribute,
-.javascript .class,
-.javascript .special {
-  color: #e6550d;
-}
+    .axis path, .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+    }
 
-svg {
-  font: 10px sans-serif;
-}
+    sup, sub {
+        line-height: 0;
+    }
 
-.axis path, .axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
+    q:before {
+        content: "“";
+    }
 
-sup, sub {
-  line-height: 0;
-}
+    q:after {
+        content: "”";
+    }
 
-q:before {
-  content: "“";
-}
-
-q:after {
-  content: "”";
-}
-
-blockquote q {
-  line-height: 1.5em;
-  display: inline;
-}
+    blockquote q {
+        line-height: 1.5em;
+        display: inline;
+    }
 
 
 
@@ -236,149 +234,153 @@ blockquote q {
 
 <script>
 
-var margin = {top: 80, right: 0, bottom: 10, left: 80},
-    width = 720,
-    height = 720;
+    var margin = { top: 80, right: 0, bottom: 10, left: 80 },
+        width = 1000,
+        height = 1000;
 
-var x = d3.scale.ordinal().rangeBands([0, width]),
-    z = d3.scale.linear().domain([0, 4]).clamp(true),
-    c = d3.scale.category10().domain(d3.range(10));
+    var x = d3.scale.ordinal().rangeBands([0, width]),
+        z = d3.scale.linear().domain([0, 4]).clamp(true),
+        c = d3.scale.category10().domain(d3.range(10));
 
-var svg = d3.select("body").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .style("margin-left", -margin.left + "px")
-  .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    var svg = d3.select("body").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .style("margin-left", -margin.left + "px")
+      .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+		
+	var nodes = [{"name":"process"},{"name":"extracting"},{"name":"information"},{"name":"bionlp"},{"name":"tasks"},{"name":"survey"},{"name":"biomedical"},{"name":"madhavi ganapathiraju university"},{"name":"pittsburgh pittsburgh"},{"name":"summary locating information"},{"name":"scientific literature"},{"name":"timeconsuming process"},{"name":"pubmed corpus"},{"name":"23 million articles"},{"name":"exponential rate"},{"name":"field"},{"name":"text mining"},{"name":"potential solution"},{"name":"difficulty"},{"name":"applications"},{"name":"mechanized database curation"},{"name":"computer"},{"name":"scientific hypothesis generation"},{"name":"article"},{"name":"approachable overview"},{"name":"biomedical text mining"},{"name":"recent advances"},{"name":"relevant state"},{"name":"art techniques"},{"name":"diverse area"},{"name":"research"},{"name":"utility"},{"name":"enigmatic"},{"name":"scientific community"},{"name":"roots lie"},{"name":"disparate domains"},{"name":"artificial intelligence"},{"name":"biology"},{"name":"modern approaches"},{"name":"methods"},{"name":"related"},{"name":"distinct fields"},{"name":"data mining"},{"name":"computational linguistics"},{"name":"machine learning"},{"name":"conventional definition"},{"name":"text mining references"},{"name":"text"},{"name":"more structured"},{"name":"easily accessible format"},{"name":"use"},{"name":"statistical"},{"name":"pattern"},{"name":"computational approaches"},{"name":"corpus"},{"name":"free text"},{"name":"pubmed"},{"name":"recent focus"},{"name":"biomedical domain"},{"name":"overwhelmingly large"},{"name":"important information"},{"name":"remains inaccessible"},{"name":"researchers"},{"name":"impracticality"},{"name":"immense quantities"},{"name":"data"},{"name":"computational power"},{"name":"relevant data points"},{"name":"publications"},{"name":"large collections"},{"name":"researcher"},{"name":"relative ease"},{"name":"background"},{"name":"section"},{"name":"brief overview"},{"name":"core tasks"},{"name":"bionlp workflow"},{"name":"microevolution"},{"name":"relevant research directionality"},{"name":"past decade"},{"name":"proceeding sections"},{"name":"individual applications"},{"name":"algorithmic approaches"},{"name":"biomedical text mining information retrieval"},{"name":"ir"},{"name":"subset"},{"name":"documents"},{"name":"specific query"},{"name":"larger set"},{"name":"ir techniques"},{"name":"search engines"},{"name":"google scholar"},{"name":"pubmed search"},{"name":"relevant documents"},{"name":"information retrieval"},{"name":"document retrieval"},{"name":"document classification"},{"name":"text classification"},{"name":"biomedical community"},{"name":"number"},{"name":"search"},{"name":"time"},{"name":"interest"},{"name":"large scientific corpus"},{"name":"ie"},{"name":"unstructured text"},{"name":"method"},{"name":"many bionlp systems"},{"name":"overall computation time"},{"name":"many systems"},{"name":"recent literature"},{"name":"plugandplay"},{"name":"adaptability"},{"name":"existing ir"},{"name":"ie tools"},{"name":"domain specific systems"},{"name":"shorter period"},{"name":"modularity"},{"name":"detail"},{"name":"future sections"},{"name":"ner"},{"name":"problem"},{"name":"identifying important biological entities"},{"name":"genes"},{"name":"diseases"},{"name":"drugs"},{"name":"important step"},{"name":"text mining work flow"},{"name":"accuracy"},{"name":"dependent"},{"name":"correct identification"},{"name":"entities"},{"name":"question"},{"name":"critical step"},{"name":"workshops investigational research"},{"name":"nascent stages"},{"name":"highly variable approaches"},{"name":"fields sophisticated rooting"},{"name":"two main problems"},{"name":"time period"},{"name":"public datasets"},{"name":"sparsely available"},{"name":"call"},{"name":"systematic comparison"},{"name":"systems"},{"name":"2"},{"name":"black box systems"},{"name":"pervasive"},{"name":"literature"},{"name":"light"},{"name":"problems"},{"name":"benchmarking competitions"},{"name":"means"},{"name":"performance assessment"},{"name":"guide research paths"},{"name":"results"},{"name":"workshops"},{"name":"most prominent shortcomings"},{"name":"1"},{"name":"establishing gold standards"},{"name":"system comparison"},{"name":"standardized evaluation data sets"},{"name":"most effective approaches"},{"name":"3"},{"name":"better"},{"name":"community"},{"name":"common goal"},{"name":"better understanding"},{"name":"feasible applications"},{"name":"bionlp systems"},{"name":"gain publicity"},{"name":"direct future research"},{"name":"evaluation tasks"},{"name":"7"},{"name":"biocreative"},{"name":"first large competition"},{"name":"kind"},{"name":"knowledge discovery"},{"name":"data mining challenge cup"},{"name":"task"},{"name":"biomed document"},{"name":"gene role classification"},{"name":"2002"},{"name":"current text mining techniques"},{"name":"database curation"},{"name":"prioritization"},{"name":"full text articles"},{"name":"genomics track"},{"name":"2003"},{"name":"five proceeding years"},{"name":"29 participatory groups"},{"name":"question answering systems"},{"name":"genomics"},{"name":"historical confines"},{"name":"two main challenges"},{"name":"recurrently prolific"},{"name":"critical assessment"},{"name":"information extraction"},{"name":"challenge"},{"name":"biocreative challenge"},{"name":"2004"},{"name":"two biologically relevant ie tasks"},{"name":"entity normalization"},{"name":"identification"},{"name":"gene"},{"name":"protein names"},{"name":"functional annotation"},{"name":"extraction"},{"name":"passages"},{"name":"gene ontology annotations"},{"name":"biocreative ii"},{"name":"2006"},{"name":"three tracks"},{"name":"first"},{"name":"second tracks"},{"name":"gene mention tagging"},{"name":"gm"},{"name":"gene normalization"},{"name":"gn"},{"name":"two tasks"},{"name":"previous biocreative"},{"name":"more recent tasks"},{"name":"10"},{"name":"third task"},{"name":"introduction"},{"name":"most relevant"},{"name":"important task"},{"name":"protein interaction detection"},{"name":"especially important"},{"name":"widespread use"},{"name":"high throughput experimental technologies"},{"name":"yeast twohybrid screening"},{"name":"affinity purification"},{"name":"mass spectroscopy"},{"name":"effective"},{"name":"discerning large numbers"},{"name":"proteinprotein interactions"},{"name":"single study"},{"name":"multiple problems"},{"name":"interactions"},{"name":"unknown"},{"name":"sheer number"},{"name":"difficult"},{"name":"impossible"},{"name":"manually map"},{"name":"interaction networks"},{"name":"subnetworks"},{"name":"biocreative iii"},{"name":"2010"},{"name":"gene normalization task"},{"name":"imt"},{"name":"newly introduced interactive task"},{"name":"act"},{"name":"imt tasks"},{"name":"existing systems"},{"name":"iat task"},{"name":"novel"},{"name":"proposal"},{"name":"beginning"},{"name":"paradigm shift"},{"name":"text mining ideology"},{"name":"goal"},{"name":"iat"},{"name":"development"},{"name":"interactive systems"},{"name":"biocreative iv"},{"name":"2013"},{"name":"biocreative repertoire"},{"name":"employment"},{"name":"proposed markup format"},{"name":"bioc"},{"name":"common interchange format"},{"name":"interoperability"},{"name":"simplicity"},{"name":"broad usage"},{"name":"text mining tools"},{"name":"biomedical text mining tasks"},{"name":"positive impact"},{"name":"focus"},{"name":"result"},{"name":"approaches"},{"name":"bionlp system construction"},{"name":"even"},{"name":"past few years"},{"name":"trends"},{"name":"core focal areas"},{"name":"domain"},{"name":"evolution"},{"name":"bionlp community events"},{"name":"inception"},{"name":"initial benchmarking events"},{"name":"infancy"},{"name":"improvement"},{"name":"text mining core tasks"},{"name":"last few years"},{"name":"largely focused"},{"name":"diversification"},{"name":"techniques"},{"name":"integration"},{"name":"domainspecific resources"},{"name":"ontologies"},{"name":"interaction databases"},{"name":"push"},{"name":"fully automated extraction"},{"name":"suggested"},{"name":"early research"},{"name":"16"},{"name":"largely replaced"},{"name":"more feasible applications"},{"name":"semiautomation curation assistance"},{"name":"theme"},{"name":"bionlp 11"},{"name":"generalization"},{"name":"numerous recent publications"},{"name":"varied biomedical domains"},{"name":"similar themes"},{"name":"extensibility"},{"name":"recent research"},{"name":"largescale application"},{"name":"remainder"},{"name":"review"},{"name":"bionlp system applications"},{"name":"current approaches"}]
+	var links = [{"source": 0, "target": 1},{"source": 1, "target": 2},{"source": 3, "target": 4},{"source": 5, "target": 6},{"source": 7, "target": 8},{"source": 9, "target": 10},{"source": 10, "target": 11},{"source": 12, "target": 13},{"source": 13, "target": 14},{"source": 15, "target": 16},{"source": 16, "target": 17},{"source": 17, "target": 18},{"source": 19, "target": 20},{"source": 20, "target": 21},{"source": 21, "target": 22},{"source": 23, "target": 24},{"source": 24, "target": 25},{"source": 25, "target": 26},{"source": 26, "target": 27},{"source": 27, "target": 28},{"source": 3, "target": 29},{"source": 29, "target": 30},{"source": 30, "target": 31},{"source": 31, "target": 32},{"source": 32, "target": 33},{"source": 34, "target": 35},{"source": 35, "target": 36},{"source": 36, "target": 37},{"source": 37, "target": 38},{"source": 38, "target": 39},{"source": 39, "target": 40},{"source": 40, "target": 41},{"source": 41, "target": 42},{"source": 43, "target": 44},{"source": 45, "target": 46},{"source": 46, "target": 0},{"source": 2, "target": 47},{"source": 47, "target": 48},{"source": 48, "target": 49},{"source": 3, "target": 50},{"source": 50, "target": 51},{"source": 51, "target": 52},{"source": 52, "target": 53},{"source": 53, "target": 2},{"source": 2, "target": 54},{"source": 54, "target": 55},{"source": 55, "target": 56},{"source": 16, "target": 57},{"source": 57, "target": 58},{"source": 58, "target": 10},{"source": 10, "target": 59},{"source": 60, "target": 55},{"source": 55, "target": 61},{"source": 61, "target": 62},{"source": 62, "target": 63},{"source": 63, "target": 64},{"source": 64, "target": 65},{"source": 66, "target": 67},{"source": 67, "target": 68},{"source": 2, "target": 69},{"source": 69, "target": 47},{"source": 47, "target": 70},{"source": 70, "target": 71},{"source": 72, "target": 73},{"source": 73, "target": 74},{"source": 74, "target": 75},{"source": 75, "target": 76},{"source": 76, "target": 77},{"source": 77, "target": 78},{"source": 78, "target": 79},{"source": 80, "target": 81},{"source": 81, "target": 82},{"source": 4, "target": 83},{"source": 84, "target": 0},{"source": 0, "target": 85},{"source": 85, "target": 86},{"source": 86, "target": 87},{"source": 87, "target": 88},{"source": 88, "target": 86},{"source": 89, "target": 90},{"source": 90, "target": 91},{"source": 91, "target": 92},{"source": 92, "target": 93},{"source": 0, "target": 94},{"source": 94, "target": 95},{"source": 96, "target": 97},{"source": 98, "target": 84},{"source": 84, "target": 99},{"source": 99, "target": 86},{"source": 86, "target": 100},{"source": 100, "target": 101},{"source": 101, "target": 2},{"source": 2, "target": 102},{"source": 102, "target": 103},{"source": 104, "target": 0},{"source": 2, "target": 105},{"source": 106, "target": 84},{"source": 84, "target": 107},{"source": 107, "target": 108},{"source": 109, "target": 110},{"source": 110, "target": 111},{"source": 112, "target": 113},{"source": 113, "target": 114},{"source": 114, "target": 115},{"source": 115, "target": 116},{"source": 116, "target": 101},{"source": 112, "target": 117},{"source": 117, "target": 118},{"source": 118, "target": 119},{"source": 120, "target": 58},{"source": 58, "target": 121},{"source": 121, "target": 122},{"source": 122, "target": 55},{"source": 55, "target": 123},{"source": 124, "target": 125},{"source": 125, "target": 126},{"source": 126, "target": 127},{"source": 128, "target": 104},{"source": 104, "target": 84},{"source": 84, "target": 129},{"source": 129, "target": 130},{"source": 130, "target": 131},{"source": 131, "target": 132},{"source": 132, "target": 133},{"source": 134, "target": 135},{"source": 135, "target": 25},{"source": 25, "target": 136},{"source": 136, "target": 137},{"source": 138, "target": 139},{"source": 140, "target": 141},{"source": 141, "target": 142},{"source": 142, "target": 143},{"source": 143, "target": 144},{"source": 144, "target": 145},{"source": 146, "target": 147},{"source": 147, "target": 148},{"source": 149, "target": 150},{"source": 151, "target": 4},{"source": 4, "target": 152},{"source": 152, "target": 153},{"source": 153, "target": 154},{"source": 155, "target": 156},{"source": 156, "target": 15},{"source": 15, "target": 157},{"source": 157, "target": 158},{"source": 159, "target": 160},{"source": 160, "target": 161},{"source": 145, "target": 144},{"source": 144, "target": 162},{"source": 162, "target": 163},{"source": 164, "target": 165},{"source": 165, "target": 166},{"source": 167, "target": 168},{"source": 168, "target": 169},{"source": 169, "target": 170},{"source": 170, "target": 171},{"source": 172, "target": 102},{"source": 102, "target": 3},{"source": 173, "target": 174},{"source": 175, "target": 176},{"source": 177, "target": 178},{"source": 179, "target": 180},{"source": 180, "target": 181},{"source": 181, "target": 182},{"source": 179, "target": 183},{"source": 183, "target": 184},{"source": 184, "target": 185},{"source": 185, "target": 186},{"source": 187, "target": 188},{"source": 188, "target": 189},{"source": 190, "target": 188},{"source": 188, "target": 94},{"source": 94, "target": 191},{"source": 191, "target": 15},{"source": 15, "target": 192},{"source": 192, "target": 15},{"source": 15, "target": 193},{"source": 193, "target": 96},{"source": 194, "target": 195},{"source": 196, "target": 197},{"source": 197, "target": 37},{"source": 198, "target": 3},{"source": 199, "target": 200},{"source": 200, "target": 201},{"source": 202, "target": 203},{"source": 203, "target": 204},{"source": 204, "target": 205},{"source": 205, "target": 55},{"source": 55, "target": 206},{"source": 206, "target": 55},{"source": 55, "target": 207},{"source": 207, "target": 208},{"source": 208, "target": 209},{"source": 210, "target": 211},{"source": 211, "target": 212},{"source": 213, "target": 214},{"source": 214, "target": 215},{"source": 216, "target": 217},{"source": 218, "target": 219},{"source": 219, "target": 220},{"source": 220, "target": 221},{"source": 221, "target": 207},{"source": 207, "target": 186},{"source": 186, "target": 222},{"source": 223, "target": 224},{"source": 224, "target": 225},{"source": 225, "target": 226},{"source": 227, "target": 228},{"source": 228, "target": 15},{"source": 15, "target": 37},{"source": 37, "target": 229},{"source": 229, "target": 230},{"source": 230, "target": 231},{"source": 231, "target": 232},{"source": 232, "target": 233},{"source": 39, "target": 234},{"source": 234, "target": 235},{"source": 235, "target": 236},{"source": 236, "target": 237},{"source": 237, "target": 238},{"source": 238, "target": 33},{"source": 128, "target": 39},{"source": 39, "target": 239},{"source": 239, "target": 240},{"source": 241, "target": 239},{"source": 239, "target": 242},{"source": 242, "target": 243},{"source": 243, "target": 244},{"source": 244, "target": 245},{"source": 245, "target": 246},{"source": 247, "target": 248},{"source": 248, "target": 249},{"source": 250, "target": 251},{"source": 252, "target": 253},{"source": 253, "target": 254},{"source": 254, "target": 39},{"source": 255, "target": 256},{"source": 256, "target": 257},{"source": 257, "target": 258},{"source": 258, "target": 259},{"source": 259, "target": 260},{"source": 261, "target": 262},{"source": 262, "target": 263},{"source": 263, "target": 264},{"source": 264, "target": 184},{"source": 265, "target": 266},{"source": 266, "target": 226},{"source": 226, "target": 267},{"source": 267, "target": 268},{"source": 268, "target": 269},{"source": 269, "target": 270},{"source": 271, "target": 272},{"source": 273, "target": 274},{"source": 274, "target": 275},{"source": 224, "target": 276},{"source": 276, "target": 277},{"source": 277, "target": 278},{"source": 278, "target": 15},{"source": 15, "target": 279},{"source": 280, "target": 281},{"source": 281, "target": 79},{"source": 79, "target": 282},{"source": 282, "target": 283},{"source": 284, "target": 285},{"source": 285, "target": 286},{"source": 286, "target": 287},{"source": 287, "target": 288},{"source": 288, "target": 289},{"source": 290, "target": 291},{"source": 291, "target": 15},{"source": 15, "target": 292},{"source": 292, "target": 293},{"source": 294, "target": 30},{"source": 30, "target": 295},{"source": 295, "target": 296},{"source": 296, "target": 168},{"source": 168, "target": 297},{"source": 297, "target": 298},{"source": 298, "target": 299},{"source": 299, "target": 300},{"source": 300, "target": 301},{"source": 302, "target": 303},{"source": 303, "target": 304},{"source": 304, "target": 305},{"source": 306, "target": 307},{"source": 307, "target": 308},{"source": 308, "target": 309},{"source": 310, "target": 311},{"source": 311, "target": 312},{"source": 312, "target": 313},{"source": 313, "target": 254},{"source": 254, "target": 314},{"source": 315, "target": 316},{"source": 316, "target": 317},{"source": 317, "target": 318},{"source": 318, "target": 254},{"source": 319, "target": 320},{"source": 320, "target": 321},{"source": 321, "target": 322},{"source": 322, "target": 75}]
+		
+		
+		
 
-d3.json("NetworkGraphJSON.json", function (graph) {
-  var matrix = [],
-      nodes = graph.nodes,
-      n = nodes.length;
+        var matrix = [],
+            n = nodes.length;
 
-  // Compute index per node.
-  nodes.forEach(function(node, i) {
-    node.index = i;
-    node.count = 0;
-    matrix[i] = d3.range(n).map(function(j) { return {x: j, y: i, z: 0}; });
-  });
+        // Compute index per node.
+        nodes.forEach(function (node, i) {
+            node.index = i;
+            node.count = 0;
+            matrix[i] = d3.range(n).map(function (j) { return { x: j, y: i, z: 0 }; });
+        });
 
-  // Convert links to matrix; count character occurrences.
-  graph.links.forEach(function(link) {
-      matrix[link.source][link.target].z += Math.floor(Math.random() * 6) + 1;
-      matrix[link.target][link.source].z += Math.floor(Math.random() * 6) + 1;
-      matrix[link.source][link.source].z += Math.floor(Math.random() * 6) + 1;
-      matrix[link.target][link.target].z += Math.floor(Math.random() * 6) + 1;
-      nodes[link.source].count += Math.floor(Math.random() * 6) + 1;
-      nodes[link.target].count += Math.floor(Math.random() * 6) + 1;
-  });
+        // Convert links to matrix; count character occurrences.
+        links.forEach(function (link) {
+            matrix[link.source][link.target].z += Math.floor(Math.random() * 6) + 1;
+            matrix[link.target][link.source].z += Math.floor(Math.random() * 6) + 1;
+            matrix[link.source][link.source].z += Math.floor(Math.random() * 6) + 1;
+            matrix[link.target][link.target].z += Math.floor(Math.random() * 6) + 1;
+            nodes[link.source].count += Math.floor(Math.random() * 6) + 1;
+            nodes[link.target].count += Math.floor(Math.random() * 6) + 1;
+        });
 
-  // Precompute the orders.
-  var orders = {
-    name: d3.range(n).sort(function(a, b) { return d3.ascending(nodes[a].name, nodes[b].name); }),
-    count: d3.range(n).sort(function(a, b) { return nodes[b].count - nodes[a].count; }),
-    group: d3.range(n).sort(function(a, b) { return nodes[b].group - nodes[a].group; })
-  };
+        // Precompute the orders.
+        var orders = {
+            name: d3.range(n).sort(function (a, b) { return d3.ascending(nodes[a].name, nodes[b].name); }),
+            count: d3.range(n).sort(function (a, b) { return nodes[b].count - nodes[a].count; }),
+            group: d3.range(n).sort(function (a, b) { return nodes[b].group - nodes[a].group; })
+        };
 
-  // The default sort order.
-  x.domain(orders.name);
+        // The default sort order.
+        x.domain(orders.name);
 
-  svg.append("rect")
-      .attr("class", "background")
-      .attr("width", width)
-      .attr("height", height);
+        svg.append("rect")
+            .attr("class", "background")
+            .attr("width", width)
+            .attr("height", height);
 
-  var row = svg.selectAll(".row")
-      .data(matrix)
-    .enter().append("g")
-      .attr("class", "row")
-      .attr("transform", function(d, i) { return "translate(0," + x(i) + ")"; })
-      .each(row);
+        var row = svg.selectAll(".row")
+            .data(matrix)
+          .enter().append("g")
+            .attr("class", "row")
+            .attr("transform", function (d, i) { return "translate(0," + x(i) + ")"; })
+            .each(row);
 
-  row.append("line")
-      .attr("x2", width);
+        row.append("line")
+            .attr("x2", width);
 
-  row.append("text")
-      .attr("x", -6)
-      .attr("y", x.rangeBand() / 2)
-      .attr("dy", ".32em")
-      .attr("text-anchor", "end")
-      .text(function(d, i) { return nodes[i].name; });
+        row.append("text")
+            .attr("x", -6)
+            .attr("y", x.rangeBand() / 2)
+            .attr("dy", ".32em")
+            .attr("text-anchor", "end")
+            .text(function (d, i) { return nodes[i].name; });
 
-  var column = svg.selectAll(".column")
-      .data(matrix)
-    .enter().append("g")
-      .attr("class", "column")
-      .attr("transform", function(d, i) { return "translate(" + x(i) + ")rotate(-90)"; });
+        var column = svg.selectAll(".column")
+            .data(matrix)
+          .enter().append("g")
+            .attr("class", "column")
+            .attr("transform", function (d, i) { return "translate(" + x(i) + ")rotate(-90)"; });
 
-  column.append("line")
-      .attr("x1", -width);
+        column.append("line")
+            .attr("x1", -width);
 
-  column.append("text")
-      .attr("x", 6)
-      .attr("y", x.rangeBand() / 2)
-      .attr("dy", ".32em")
-      .attr("text-anchor", "start")
-      .text(function(d, i) { return nodes[i].name; });
+        column.append("text")
+            .attr("x", 6)
+            .attr("y", x.rangeBand() / 2)
+            .attr("dy", ".32em")
+            .attr("text-anchor", "start")
+            .text(function (d, i) { return nodes[i].name; });
 
-  function row(row) {
-    var cell = d3.select(this).selectAll(".cell")
-        .data(row.filter(function(d) { return d.z; }))
-      .enter().append("rect")
-        .attr("class", "cell")
-        .attr("x", function(d) { return x(d.x); })
-        .attr("width", x.rangeBand())
-        .attr("height", x.rangeBand())
-        .style("fill-opacity", function(d) { return z(d.z); })
-       // .style("fill", function(d) { return nodes[d.x].group == nodes[d.y].group ? c(nodes[d.x].group) : null; })
-        .style("fill", "#0000CD")
-        .on("mouseover", mouseover)
-        .on("mouseout", mouseout);
-  }
+        function row(row) {
+            var cell = d3.select(this).selectAll(".cell")
+                .data(row.filter(function (d) { return d.z; }))
+              .enter().append("rect")
+                .attr("class", "cell")
+                .attr("x", function (d) { return x(d.x); })
+                .attr("width", x.rangeBand())
+                .attr("height", x.rangeBand())
+                .style("fill-opacity", function (d) { return z(d.z); })
+               // .style("fill", function(d) { return nodes[d.x].group == nodes[d.y].group ? c(nodes[d.x].group) : null; })
+                .style("fill", "#0000CD")
+                .on("mouseover", mouseover)
+                .on("mouseout", mouseout);
+        }
 
-  function mouseover(p) {
-    d3.selectAll(".row text").classed("active", function(d, i) { return i == p.y; });
-    d3.selectAll(".column text").classed("active", function(d, i) { return i == p.x; });
-  }
+        function mouseover(p) {
+            d3.selectAll(".row text").classed("active", function (d, i) { return i == p.y; });
+            d3.selectAll(".column text").classed("active", function (d, i) { return i == p.x; });
+        }
 
-  function mouseout() {
-    d3.selectAll("text").classed("active", false);
-  }
+        function mouseout() {
+            d3.selectAll("text").classed("active", false);
+        }
 
-  d3.select("#order").on("change", function() {
-    clearTimeout(timeout);
-    order(this.value);
-  });
+        d3.select("#order").on("change", function () {
+            clearTimeout(timeout);
+            order(this.value);
+        });
 
-  function order(value) {
-    x.domain(orders[value]);
+        function order(value) {
+            x.domain(orders[value]);
 
-    var t = svg.transition().duration(2500);
+            var t = svg.transition().duration(2500);
 
-    t.selectAll(".row")
-        .delay(function(d, i) { return x(i) * 4; })
-        .attr("transform", function(d, i) { return "translate(0," + x(i) + ")"; })
-      .selectAll(".cell")
-        .delay(function(d) { return x(d.x) * 4; })
-        .attr("x", function(d) { return x(d.x); });
+            t.selectAll(".row")
+                .delay(function (d, i) { return x(i) * 4; })
+                .attr("transform", function (d, i) { return "translate(0," + x(i) + ")"; })
+              .selectAll(".cell")
+                .delay(function (d) { return x(d.x) * 4; })
+                .attr("x", function (d) { return x(d.x); });
 
-    t.selectAll(".column")
-        .delay(function(d, i) { return x(i) * 4; })
-        .attr("transform", function(d, i) { return "translate(" + x(i) + ")rotate(-90)"; });
-  }
+            t.selectAll(".column")
+                .delay(function (d, i) { return x(i) * 4; })
+                .attr("transform", function (d, i) { return "translate(" + x(i) + ")rotate(-90)"; });
+        }
 
-  var timeout = setTimeout(function() {
-    order("group");
-    d3.select("#order").property("selectedIndex", 2).node().focus();
-  }, 5000);
-});
+        var timeout = setTimeout(function () {
+            order("group");
+            d3.select("#order").property("selectedIndex", 2).node().focus();
+        }, 5000);
+    
 
 </script>
 
-    <footer>
-        <aside>8/28/15</aside>
-        <a>Adam Roth</a>
-    </footer>
+<footer>
+    <aside>8/28/15</aside>
+    <a>Adam Roth</a>
+</footer>
 
 
 

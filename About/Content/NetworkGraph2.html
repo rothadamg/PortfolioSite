@@ -4,6 +4,7 @@
     body, .stage {
         background: #042029;
     }
+	
 </style>
 <body>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
@@ -14,7 +15,7 @@ var w = 1350,
 var circleWidth = 8;
 
 var fontFamily = 'Bree Serif',
-    fontSizeHighlight = '3.5em',
+    fontSizeHighlight = '100em',
     fontSizeNormal = '3em';
 
 var palette = {
@@ -234,13 +235,14 @@ var links = [
 var highlight_color = "blue";
 var highlight_trans = 0.1;
 
-
+var zoom = d3.behavior.zoom().translate([600,500]).scale(.15);
 
 var vis = d3.select("body")
     .append("svg:svg")
       .attr("class", "stage")
       .attr("width", w)
-      .attr("height", h);
+      .attr("height", h)
+	  .call(d3.behavior.zoom().on("zoom", zoomed));
 
 var force = d3.layout.force()
     .nodes(nodes)
@@ -372,6 +374,10 @@ force.on("tick", function(e) {
 });
 
 force.start();
+
+function zoomed() {
+  container.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+}	
 
 function exit_highlight()
 {

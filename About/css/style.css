@@ -703,7 +703,7 @@ video.bgvid {position: absolute; right: 0; bottom: 0; min-width: 100%; min-heigh
 .main nav a.active {color: #009eec; font-weight: 700;}
 .main nav a:hover {color: #009eec;}
 .main .bannercontainer {padding-top: 97px;}
-.main .slide-boxes {position: absolute; bottom: 120px; right: 0px; left:40%; background: #121212; padding: 45px 20px 50px 45px; width: 100%; overflow: hidden; z-index: 5;}
+.main .slide-boxes {position: absolute; bottom: 120px; right: 0px; left:150px; background: #121212; padding: 45px 0px 50px 45px; width: 100%; overflow: hidden; z-index: 5;}
 .main .slide-boxes h1 {font-size: 36px; color: #fff; font-weight: 600; line-height: 45px; padding-bottom: 15px;}
 .main .slide-boxes p {font-size: 13px; color: #fff;}
 .main .next {position: absolute; top: 50%; right: 0px; width: 60px; height: 60px; background: #121212; z-index: 50; cursor: pointer;}
