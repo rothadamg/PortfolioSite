@@ -1,0 +1,431 @@
+﻿<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+    body, .stage {
+        background: #042029;
+    }
+</style>
+<body>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script language="javascript">
+var w = 1350,
+    h = 850;
+
+var circleWidth = 8;
+
+var fontFamily = 'Bree Serif',
+    fontSizeHighlight = '3.5em',
+    fontSizeNormal = '3em';
+
+var palette = {
+      "lightgray": "#819090",
+      "gray": "#708284",
+      "mediumgray": "#536870",
+      "darkgray": "#475B62",
+
+      "darkblue": "#0A2933",
+      "darkerblue": "#042029",
+
+      "paleryellow": "#FCF4DC",
+      "paleyellow": "#EAE3CB",
+      "yellow": "#A57706",
+      "orange": "#BD3613",
+      "red": "#D11C24",
+      "pink": "#C61C6F",
+      "purple": "#595AB7",
+      "blue": "#2176C7",
+      "green": "#259286",
+      "yellowgreen": "#738A05"
+  }
+
+
+
+var nodes = [
+               {"name":"one tablet"},
+{"name":"one tablet"},
+{"name":"mouth"},
+{"name":"injection"},
+{"name":"lucentis"},
+{"name":"tab"},
+{"name":"bedtime as needed"},
+{"name":"anxiety"},
+{"name":"nerves amlodipine besylate 10mg tab"},
+{"name":"every day"},
+{"name":"blood pressure"},
+{"name":"bedtime"},
+{"name":"heart"},
+{"name":"tablet"},
+{"name":"meal"},
+{"name":"nutritionalsupplement galantamine hydrobromide 12mg tab"},
+{"name":"mouth twice a day lisinopril 5mg tab"},
+{"name":"blood"},
+{"name":"soln"},
+{"name":"1 drop right eye three times a day"},
+{"name":"3 days"},
+{"name":"eye infection ranitidine hcl 150mg tab"},
+{"name":"stomach"},
+{"name":"500mg"},
+{"name":"mouth as needed 9 total medications"},
+{"name":"patient"},
+{"name":"allergies"},
+{"name":"evidence"},
+{"name":"abuse"},
+{"name":"safe"},
+{"name":"current living arrangements patient"},
+{"name":"reffered"},
+{"name":"social worker"},
+{"name":"social work consult"},
+{"name":"history"},
+{"name":"present illness"},
+{"name":"85 yo male"},
+{"name":"wet amd od"},
+{"name":"here"},
+{"name":"amd check"},
+{"name":"visual acuity"},
+{"name":"correction"},
+{"name":"deep"},
+{"name":"quiet os"},
+{"name":"quiet iris"},
+{"name":"78d"},
+{"name":"20d lenses"},
+{"name":"atrophic scar extending"},
+{"name":"disc vessels"},
+{"name":"no holes"},
+{"name":"tears os"},
+{"name":"tears"},
+{"name":"disease process"},
+{"name":"implications"},
+{"name":"management plan"},
+{"name":"all questions"},
+{"name":"withgrapefruit juice atenolol 50mg tab"},
+{"name":"vision"},
+{"name":"sp iva 22"},
+{"name":"failing te"},
+{"name":"q8 iva"},
+{"name":"wet amd od no signs"},
+{"name":"fluid"},
+{"name":"exam"},
+{"name":"oct rtc 1m"},
+{"name":"dr ralph greensam"},
+{"name":"withgrapefruit juice atenolol 25mg tab"},
+{"name":"vision stable"},
+{"name":"drusen"},
+{"name":"cme"},
+{"name":"intraretinal heme inferiorly os"},
+{"name":"oct macula od"},
+{"name":"ped"},
+{"name":"intraretinal fluid cw active disease os"},
+{"name":"wet amd od with recurrence"},
+{"name":"activity"},
+{"name":"intraretinal heme"},
+{"name":"3 monthly iva injectionsod will"},
+{"name":"13 ivaod"},
+{"name":"potential risks"},
+{"name":"benefits"},
+{"name":"alternatives"},
+{"name":"avastin"},
+{"name":"pt"},
+{"name":"investigational offlabel usage"},
+{"name":"risks"},
+{"name":"infection"},
+{"name":"retinallens complications"},
+{"name":"possible"},
+{"name":"risk"},
+{"name":"arterial thromboembolic event"},
+{"name":"omic consent"},
+{"name":"home"},
+{"name":"pts questions"},
+{"name":"avastin injections"},
+{"name":"fu 1 month"},
+{"name":"23 ivaod"},
+{"name":"dr paul green"}
+  ]
+
+var links = [
+{source: nodes[0], target: nodes[1]},
+{source: nodes[2], target: nodes[3]},
+{source: nodes[4], target: nodes[0]},
+{source: nodes[1], target: nodes[5]},
+{source: nodes[5], target: nodes[6]},
+{source: nodes[6], target: nodes[7]},
+{source: nodes[7], target: nodes[0]},
+{source: nodes[8], target: nodes[9]},
+{source: nodes[1], target: nodes[10]},
+{source: nodes[10], target: nodes[9]},
+{source: nodes[9], target: nodes[11]},
+{source: nodes[12], target: nodes[1]},
+{source: nodes[8], target: nodes[13]},
+{source: nodes[13], target: nodes[14]},
+{source: nodes[14], target: nodes[0]},
+{source: nodes[0], target: nodes[15]},
+{source: nodes[15], target: nodes[0]},
+{source: nodes[8], target: nodes[16]},
+{source: nodes[17], target: nodes[18]},
+{source: nodes[18], target: nodes[19]},
+{source: nodes[19], target: nodes[20]},
+{source: nodes[20], target: nodes[0]},
+{source: nodes[8], target: nodes[21]},
+{source: nodes[22], target: nodes[23]},
+{source: nodes[24], target: nodes[25]},
+{source: nodes[24], target: nodes[26]},
+{source: nodes[26], target: nodes[27]},
+{source: nodes[24], target: nodes[28]},
+{source: nodes[28], target: nodes[29]},
+{source: nodes[29], target: nodes[30]},
+{source: nodes[30], target: nodes[31]},
+{source: nodes[24], target: nodes[32]},
+{source: nodes[33], target: nodes[34]},
+{source: nodes[24], target: nodes[35]},
+{source: nodes[35], target: nodes[36]},
+{source: nodes[37], target: nodes[38]},
+{source: nodes[39], target: nodes[40]},
+{source: nodes[41], target: nodes[42]},
+{source: nodes[41], target: nodes[43]},
+{source: nodes[44], target: nodes[45]},
+{source: nodes[46], target: nodes[47]},
+{source: nodes[48], target: nodes[49]},
+{source: nodes[48], target: nodes[50]},
+{source: nodes[51], target: nodes[52]},
+{source: nodes[52], target: nodes[24]},
+{source: nodes[24], target: nodes[53]},
+{source: nodes[54], target: nodes[24]},
+{source: nodes[9], target: nodes[55]},
+{source: nodes[55], target: nodes[0]},
+{source: nodes[38], target: nodes[56]},
+{source: nodes[56], target: nodes[57]},
+{source: nodes[57], target: nodes[58]},
+{source: nodes[58], target: nodes[59]},
+{source: nodes[60], target: nodes[61]},
+{source: nodes[61], target: nodes[62]},
+{source: nodes[62], target: nodes[63]},
+{source: nodes[63], target: nodes[38]},
+{source: nodes[24], target: nodes[64]},
+{source: nodes[64], target: nodes[53]},
+{source: nodes[9], target: nodes[65]},
+{source: nodes[65], target: nodes[0]},
+{source: nodes[38], target: nodes[66]},
+{source: nodes[67], target: nodes[68]},
+{source: nodes[68], target: nodes[69]},
+{source: nodes[70], target: nodes[71]},
+{source: nodes[71], target: nodes[72]},
+{source: nodes[73], target: nodes[74]},
+{source: nodes[74], target: nodes[75]},
+{source: nodes[75], target: nodes[76]},
+{source: nodes[76], target: nodes[77]},
+{source: nodes[77], target: nodes[78]},
+{source: nodes[79], target: nodes[80]},
+{source: nodes[80], target: nodes[81]},
+{source: nodes[81], target: nodes[82]},
+{source: nodes[82], target: nodes[83]},
+{source: nodes[84], target: nodes[85]},
+{source: nodes[86], target: nodes[87]},
+{source: nodes[87], target: nodes[88]},
+{source: nodes[88], target: nodes[89]},
+{source: nodes[82], target: nodes[90]},
+{source: nodes[90], target: nodes[81]},
+{source: nodes[81], target: nodes[91]},
+{source: nodes[92], target: nodes[82]},
+{source: nodes[82], target: nodes[93]},
+{source: nodes[94], target: nodes[95]},
+{source: nodes[24], target: nodes[96]},
+{source: nodes[96], target: nodes[53]}
+]
+
+var highlight_color = "blue";
+var highlight_trans = 0.1;
+
+
+
+var vis = d3.select("body")
+    .append("svg:svg")
+      .attr("class", "stage")
+      .attr("width", w)
+      .attr("height", h);
+
+var force = d3.layout.force()
+    .nodes(nodes)
+    .links([])
+    .gravity(0.1)
+    .charge(-200)
+    .size([w, h]);
+
+ var link = vis.selectAll(".link")
+        .data(links)
+        .enter().append("line")
+          .attr("class", "link")
+          .attr("stroke", "#CCC")
+          .attr("fill", "none");
+
+ var node = vis.selectAll("circle.node")
+      .data(nodes)
+      .enter().append("g")
+      .attr("class", "node")
+
+      //MOUSEOVER
+      .on("mouseover", function(d,i) {
+	    set_highlight(d);
+        if (i>0) {
+          //CIRCLE
+          d3.select(this).selectAll("circle")
+          .transition()
+          .duration(250)
+          .style("cursor", "none")
+          .attr("r", circleWidth+3)
+          .attr("fill",palette.orange);
+
+          //TEXT
+          d3.select(this).select("text")
+          .transition()
+          .style("cursor", "none")
+          .duration(250)
+          .style("cursor", "none")
+          .attr("font-size","1.5em")
+          .attr("x", 15 )
+          .attr("y", 5 )
+        } else {
+          //CIRCLE
+          d3.select(this).selectAll("circle")
+          .style("cursor", "none")
+
+          //TEXT
+          d3.select(this).select("text")
+          .style("cursor", "none")
+        }
+      })
+
+      //MOUSEDOWN
+      .on("mousedown", function(d) { d3.event.stopPropagation();
+  		focus_node = d;
+		set_focus(d)
+	if (highlight_node === null) set_highlight(d)
+      })
+
+      //MOUSEOUT
+      .on("mouseout", function(d,i) {
+	    exit_highlight();
+        if (i>0) {
+          //CIRCLE
+          d3.select(this).selectAll("circle")
+          .transition()
+          .duration(250)
+          .attr("r", circleWidth)
+          .attr("fill",palette.pink);
+
+          //TEXT
+          d3.select(this).select("text")
+          .transition()
+          .duration(250)
+          .attr("font-size","1em")
+          .attr("x", 8 )
+          .attr("y", 4 )
+        }
+      })
+
+      .on("mouseup",
+		function() {
+		if (focus_node!==null)
+		{
+			focus_node = null;
+			if (highlight_trans<1)
+			{
+
+		circle.style("opacity", 1);
+	  text.style("opacity", 1);
+	  link.style("opacity", 1);
+	}
+		}
+
+	if (highlight_node === null) exit_highlight();
+		})
+
+      .call(force.drag);
+
+
+    //CIRCLE
+    node.append("svg:circle")
+      .attr("cx", function(d) { return d.x; })
+      .attr("cy", function(d) { return d.y; })
+      .attr("r", circleWidth)
+      .attr("fill", function(d, i) { if (i>0) { return  palette.pink; } else { return palette.paleryellow } } )
+
+    //TEXT
+    node.append("text")
+      .text(function(d, i) { return d.name; })
+    .attr("x",    function(d, i) { return circleWidth + 5; })
+      .attr("y",            function(d, i) { if (i>0) { return circleWidth + 0 }    else { return 8 } })
+      .attr("font-family",  "Bree Serif")
+      .attr("fill",         function(d, i) {  return  palette.paleryellow;  })
+      .attr("font-size",    function(d, i) {  return  "1em"; })
+      .attr("text-anchor",  function(d, i) { if (i>0) { return  "beginning"; }      else { return "end" } })
+
+
+
+force.on("tick", function(e) {
+  node.attr("transform", function(d, i) {
+        return "translate(" + d.x + "," + d.y + ")";
+    });
+   console.log(link);
+   link.attr("x1", function(d)   { return d.source.x; })
+       .attr("y1", function(d)   { return d.source.y; })
+       .attr("x2", function(d)   { return d.target.x; })
+       .attr("y2", function(d)   { return d.target.y; })
+});
+
+force.start();
+
+function exit_highlight()
+{
+		highlight_node = null;
+	if (focus_node===null)
+	{
+		svg.style("cursor","move");
+		if (highlight_color!="white")
+	{
+  	  circle.style(towhite, "white");
+	  text.style("font-weight", "normal");
+	  link.style("stroke", function(o) {return (isNumber(o.score) && o.score>=0)?color(o.score):default_link_color});
+ }
+
+	}
+}
+
+function set_focus(d)
+{
+if (highlight_trans<1)  {
+    circle.style("opacity", function(o) {
+                return isConnected(d, o) ? 1 : highlight_trans;
+            });
+
+			text.style("opacity", function(o) {
+                return isConnected(d, o) ? 1 : highlight_trans;
+            });
+
+            link.style("opacity", function(o) {
+                return o.source.index == d.index || o.target.index == d.index ? 1 : highlight_trans;
+            });
+	}
+}
+
+function set_highlight(d)
+{
+	svg.style("cursor","pointer");
+	if (focus_node!==null) d = focus_node;
+	highlight_node = d;
+
+	if (highlight_color!="white")
+	{
+		  circle.style(towhite, function(o) {
+                return isConnected(d, o) ? highlight_color : "white";});
+			text.style("font-weight", function(o) {
+                return isConnected(d, o) ? "bold" : "normal";});
+            link.style("stroke", function(o) {
+		      return o.source.index == d.index || o.target.index == d.index ? highlight_color : ((isNumber(o.score) && o.score>=0)?color(o.score):default_link_color);
+
+            });
+	}
+}
+
+
+
+    </script>
+</body>

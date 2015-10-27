@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+<script src="d3.layout.cloud.js"></script>
+<head>
+    <title>Word Cloud</title>
+</head>
+<style>
+    p {
+        font: 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+</style>
+<body>
+
+<script>
+	var fill = d3.scale.category20();
+	
+	
+	var frequency_list = [{"text":"********************","size":15},{"text":"500mg","size":29},{"text":"active","size":29},{"text":"amd check","size":22},{"text":"blood pressure","size":29},{"text":"clear os","size":29},{"text":"confidential","size":15},{"text":"deep","size":29},{"text":"every day","size":59},{"text":"exam","size":22},{"text":"hemoglobin a1c","size":15},{"text":"injection","size":74},{"text":"injection lucentis","size":29},{"text":"management plan","size":29},{"text":"medications","size":29},{"text":"mouth","size":88},{"text":"no holes","size":29},{"text":"non-va","size":29},{"text":"nvi(iris neovascularization","size":29},{"text":"one tablet","size":88},{"text":"patient","size":132},{"text":"quiet os","size":29},{"text":"ranibizumab surgery date","size":44},{"text":"status","size":29},{"text":"tab","size":44}]
+	
+	
+	
+
+    var color = d3.scale.linear()
+            .domain([0,1,2,3,4,5,6,10,15,20,50])
+            .range(["#ddd", "#ccc", "#bbb", "#aaa", "#999", "#888", "#777", "#666", "#555", "#444", "#333", "#222"]);
+
+	var layout = d3.layout.cloud()
+			.size([850, 350])
+            .words(frequency_list)
+            .rotate(function() { return ~~(Math.random() * 2) * 90; })
+			.font("Impact")
+            .fontSize(function(d) { return d.size; })
+            .on("end", draw);
+
+    layout.start();
+
+    
+
+    function draw(words) {
+        d3.select("body").append("svg")
+                .attr("width", 850)
+                .attr("height", 350)
+                .attr("class", "wordcloud")
+                .append("g")
+                // without the transform, words words would get cutoff to the left and top, they would
+                // appear outside of the SVG area
+                  .attr("transform", "translate(320,200)")
+                .selectAll("text")
+                  .data(words)
+                .enter().append("text")
+                  .style("font-size", function(d) { return d.size + "px"; })
+				  .style("font-family", "Impact")
+                  .style("fill", function(d, i) { return fill(i); })
+				  .attr("text-anchor", "middle")
+                  .attr("transform", function(d) {
+                    return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+                  })
+                  .text(function(d) { return d.text; });
+    }
+</script>
+
+<div style="width: 110%;">
+</div>
+
+</body>
+<footer>
+    <p>Refresh page to change layout</p>
+</footer>

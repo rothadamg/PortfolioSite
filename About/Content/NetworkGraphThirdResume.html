@@ -1,0 +1,262 @@
+﻿<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+    .node {
+        stroke: #fff;
+        stroke-width: 1px;
+    }
+    
+    .node:hover {
+        fill: #FCF4DC ;
+    }
+        
+    .link {
+        stroke: #bbb;
+        stroke-opacity: 1;
+        stroke-width: 2px;
+    }
+    
+
+    
+    </style>
+    <body>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+        <script language="javascript">
+
+            var margin = {top: -5, right: -5, bottom: -5, left: -5},
+                width = 476 - margin.left - margin.right,
+                height = 476 - margin.top - margin.bottom;
+
+    var color = d3.scale.category20b();
+		
+		
+    var palette = {
+        "lightgray": "#819090",
+        "gray": "#708284",
+        "mediumgray": "#536870",
+        "darkgray": "#475B62",
+
+        "darkblue": "#0A2933",
+        "darkerblue": "#042029",
+
+        "paleryellow": "#FCF4DC",
+        "paleyellow": "#EAE3CB",
+        "yellow": "#A57706",
+        "orange": "#BD3613",
+        "red": "#D11C24",
+        "pink": "#C61C6F",
+        "purple": "#595AB7",
+        "blue": "#2176C7",
+        "green": "#259286",
+        "yellowgreen": "#738A05"
+    }
+        
+		var nodes = [{'group': 4, 'name': 'university'}, {'group': 4, 'name': 'pittsburgh department'}, {'group': 2, 'name': 'education university'}, {'group': 2, 'name': 'pittsburgh school'}, {'group': 2, 'name': 'medicine'}, {'group': 4, 'name': 'department'}, {'group': 4, 'name': 'biomedical informatics'}, {'group': 27, 'name': 'masters'}, {'group': 27, 'name': 'science major'}, {'group': 2, 'name': 'biomedical informatics university'}, {'group': 2, 'name': 'arts'}, {'group': 2, 'name': 'sciences'}, {'group': 4, 'name': 'biological science'}, {'group': 26, 'name': 'bachelor'}, {'group': 26, 'name': 'science majors'}, {'group': 25, 'name': 'work'}, {'group': 25, 'name': 'national physician assistant education blanket'}, {'group': 24, 'name': 'founder'}, {'group': 24, 'name': 'all aspects'}, {'group': 24, 'name': 'technical implementation'}, {'group': 24, 'name': 'business intelligence'}, {'group': 24, 'name': 'website'}, {'group': 23, 'name': 'marketing campaigns'}, {'group': 23, 'name': 'product'}, {'group': 22, 'name': 'book'}, {'group': 22, 'name': 'physician assistants'}, {'group': 21, 'name': 'us department'}, {'group': 21, 'name': 'veterans affairs'}, {'group': 21, 'name': 'enterprise architect'}, {'group': 21, 'name': 'veterans affairs informatics'}, {'group': 21, 'name': 'computing infrastructure'}, {'group': 21, 'name': 'applications'}, {'group': 21, 'name': 'ehr database enhancements'}, {'group': 21, 'name': '40'}, {'group': 21, 'name': '9688'}, {'group': 9, 'name': 'va'}, {'group': 9, 'name': 'nlp'}, {'group': 9, 'name': 'machine learning algorithms'}, {'group': 9, 'name': 'information'}, {'group': 9, 'name': '35 petabytes'}, {'group': 9, 'name': 'patient data'}, {'group': 20, 'name': 'lead software developer'}, {'group': 20, 'name': 'frontend'}, {'group': 20, 'name': 'backend systems'}, {'group': 20, 'name': 'automated text messaging system'}, {'group': 19, 'name': 'database'}, {'group': 19, 'name': 'analytics'}, {'group': 19, 'name': 'sql'}, {'group': 18, 'name': 'html'}, {'group': 18, 'name': 'apis'}, {'group': 17, 'name': 'present data mining specialist'}, {'group': 17, 'name': 'short term machine learning'}, {'group': 17, 'name': 'data analytics projects'}, {'group': 17, 'name': 'freelancer'}, {'group': 16, 'name': 'freelancers'}, {'group': 16, 'name': 'blanket'}, {'group': 15, 'name': 'teams'}, {'group': 15, 'name': 'remoteoverseas developers'}, {'group': 14, 'name': 'informatics engineer research associate'}, {'group': 14, 'name': 'algorithms'}, {'group': 14, 'name': 'computer systems'}, {'group': 14, 'name': 'use'}, {'group': 14, 'name': 'health information'}, {'group': 14, 'name': 'application'}, {'group': 14, 'name': 'natural language'}, {'group': 14, 'name': 'biomedical freetext machine learning'}, {'group': 14, 'name': 'text mining'}, {'group': 14, 'name': 'protein interaction prediction'}, {'group': 13, 'name': 'laboratory technician molecular'}, {'group': 13, 'name': 'cellular biology research'}, {'group': 13, 'name': 'mucolipidosis type iv pathogenesis'}, {'group': 13, 'name': 'molecular'}, {'group': 13, 'name': 'recombinant dna'}, {'group': 13, 'name': 'relevant projects'}, {'group': 13, 'name': 'molecularlevel data'}, {'group': 13, 'name': 'interactomelevel disease mechanisms'}, {'group': 12, 'name': 'data warehouse manager'}, {'group': 12, 'name': 'automated cancer history classification algorithm'}, {'group': 12, 'name': 'ehr data'}, {'group': 12, 'name': 'framework development'}, {'group': 12, 'name': 'national mesothelioma virtual bank java'}, {'group': 12, 'name': 'query tool'}, {'group': 12, 'name': 'supporting'}, {'group': 12, 'name': 'facilitating translational tissue research'}, {'group': 4, 'name': 'presentation'}, {'group': 4, 'name': 'graphic design software'}, {'group': 11, 'name': 'academic research biomedical event extraction'}, {'group': 11, 'name': 'validating proteinprotein interaction hypotheses'}, {'group': 11, 'name': 'state'}, {'group': 11, 'name': 'art biomedical text mining methods'}, {'group': 11, 'name': 'existing proteinprotein interaction predictions'}, {'group': 10, 'name': 'enhancing biomedical text summarization'}, {'group': 10, 'name': 'latent semantic analysis'}, {'group': 10, 'name': 'framework'}, {'group': 10, 'name': 'proteinprotein interaction predictions'}, {'group': 10, 'name': 'analyzing textual semantic similarity'}, {'group': 9, 'name': 'connecting academic researchers'}, {'group': 9, 'name': 'publication content similarity analysis'}, {'group': 8, 'name': 'textmining'}, {'group': 8, 'name': 'graph theory'}, {'group': 8, 'name': 'networks'}, {'group': 8, 'name': 'similar academic researchers'}, {'group': 6, 'name': 'publications publications literature'}, {'group': 6, 'name': 'similarity score'}, {'group': 6, 'name': 'proteinprotein interactions ieee transactions'}, {'group': 6, 'name': 'computational biology'}, {'group': 6, 'name': 'bioinformatics'}, {'group': 6, 'name': 'introduction'}, {'group': 6, 'name': 'biology'}, {'group': 6, 'name': 'ii'}, {'group': 6, 'name': 'organic chemistry'}, {'group': 6, 'name': 'chemistry'}, {'group': 6, 'name': 'physics'}, {'group': 6, 'name': 'mathematics'}, {'group': 6, 'name': 'genetics'}, {'group': 6, 'name': 'clinical informatics'}, {'group': 7, 'name': 'object'}, {'group': 7, 'name': 'programming'}, {'group': 6, 'name': 'clinical environment'}, {'group': 5, 'name': 'probabilistic methods'}, {'group': 5, 'name': 'artificial intelligence'}, {'group': 5, 'name': 'symbolic methods'}, {'group': 4, 'name': 'research methods'}, {'group': 4, 'name': 'publication'}, {'group': 3, 'name': 'benchtop'}, {'group': 3, 'name': 'bedside translational research'}, {'group': 2, 'name': 'awards honors university'}, {'group': 2, 'name': 'medicine graduate student research assistantship university'}, {'group': 2, 'name': 'pittsburgh'}, {'group': 1, 'name': 'society'}, {'group': 1, 'name': 'collegiate'}, {'group': 0, 'name': 'science'}, {'group': 0, 'name': 'engineering'}]
+
+		var links = [
+{"source": 0, "target": 1},
+{"source": 2, "target": 3},
+{"source": 3, "target": 4},
+{"source": 5, "target": 6},
+{"source": 7, "target": 8},
+{"source": 9, "target": 3},
+{"source": 3, "target": 10},
+{"source": 10, "target": 11},
+{"source": 5, "target": 12},
+{"source": 13, "target": 14},
+{"source": 15, "target": 16},
+{"source": 17, "target": 18},
+{"source": 18, "target": 19},
+{"source": 19, "target": 20},
+{"source": 20, "target": 21},
+{"source": 22, "target": 23},
+{"source": 24, "target": 25},
+{"source": 26, "target": 27},
+{"source": 28, "target": 26},
+{"source": 26, "target": 29},
+{"source": 29, "target": 30},
+{"source": 30, "target": 31},
+{"source": 31, "target": 32},
+{"source": 32, "target": 33},
+{"source": 33, "target": 34},
+{"source": 35, "target": 36},
+{"source": 36, "target": 37},
+{"source": 37, "target": 38},
+{"source": 38, "target": 39},
+{"source": 39, "target": 40},
+{"source": 41, "target": 42},
+{"source": 42, "target": 43},
+{"source": 43, "target": 44},
+{"source": 45, "target": 46},
+{"source": 46, "target": 47},
+{"source": 48, "target": 49},
+{"source": 50, "target": 51},
+{"source": 51, "target": 52},
+{"source": 52, "target": 53},
+{"source": 54, "target": 55},
+{"source": 56, "target": 57},
+{"source": 1, "target": 6},
+{"source": 58, "target": 59},
+{"source": 59, "target": 60},
+{"source": 60, "target": 61},
+{"source": 61, "target": 62},
+{"source": 62, "target": 63},
+{"source": 63, "target": 64},
+{"source": 64, "target": 65},
+{"source": 65, "target": 66},
+{"source": 66, "target": 67},
+{"source": 1, "target": 12},
+{"source": 68, "target": 69},
+{"source": 69, "target": 70},
+{"source": 70, "target": 71},
+{"source": 71, "target": 72},
+{"source": 72, "target": 73},
+{"source": 73, "target": 74},
+{"source": 74, "target": 75},
+{"source": 76, "target": 77},
+{"source": 77, "target": 78},
+{"source": 78, "target": 79},
+{"source": 79, "target": 80},
+{"source": 80, "target": 81},
+{"source": 81, "target": 82},
+{"source": 82, "target": 83},
+{"source": 84, "target": 85},
+{"source": 86, "target": 87},
+{"source": 87, "target": 88},
+{"source": 88, "target": 89},
+{"source": 89, "target": 90},
+{"source": 91, "target": 92},
+{"source": 92, "target": 93},
+{"source": 93, "target": 94},
+{"source": 94, "target": 95},
+{"source": 96, "target": 97},
+{"source": 97, "target": 36},
+{"source": 98, "target": 99},
+{"source": 99, "target": 100},
+{"source": 100, "target": 101},
+{"source": 102, "target": 103},
+{"source": 103, "target": 104},
+{"source": 104, "target": 105},
+{"source": 105, "target": 106},
+{"source": 107, "target": 108},
+{"source": 108, "target": 109},
+{"source": 110, "target": 109},
+{"source": 111, "target": 109},
+{"source": 112, "target": 109},
+{"source": 113, "target": 108},
+{"source": 114, "target": 107},
+{"source": 107, "target": 106},
+{"source": 107, "target": 115},
+{"source": 116, "target": 117},
+{"source": 107, "target": 118},
+{"source": 119, "target": 120},
+{"source": 121, "target": 120},
+{"source": 122, "target": 6},
+{"source": 123, "target": 84},
+{"source": 84, "target": 6},
+{"source": 124, "target": 125},
+{"source": 126, "target": 3},
+{"source": 3, "target": 127},
+{"source": 127, "target": 128},
+{"source": 129, "target": 130},
+{"source": 131, "target": 132}
+]
+		
+		var zoom = d3.behavior.zoom()
+	    	.scaleExtent([1, 10])
+	    	.on("zoom", zoomed);
+	    
+		var drag = d3.behavior.drag()
+	    	.origin(function(d) { return d; })
+	    	.on("dragstart", dragstarted)
+	    	.on("drag", dragged)
+    	.on("dragend", dragended);
+
+		var force = d3.layout.force()
+            .charge(-150)
+            .linkDistance(30)
+            .linkStrength(2)
+            .size([width, height]);
+
+		var circleWidth = 50
+
+		var svg = d3.select("body").append("svg")
+            .attr("width", width)
+            .attr("height", height)
+                 .call(d3.behavior.zoom().on("zoom", function () {
+                     svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")")
+                 }))
+  			.append("g")
+   			.attr("transform", "translate(" + margin.left + "," + margin.right + ")")
+   			.call(zoom);            
+
+
+		force
+            .nodes(nodes)
+            .links(links)
+            .start();
+
+		var link = svg.selectAll(".link")
+            .data(links)
+          .enter().append("line")
+            .attr("class", "link")
+            .style("stroke-width", function (d) { return Math.sqrt(d.value); });
+
+		// Create the groups under svg
+		var gnodes = svg.selectAll('g.gnode')
+          .data(nodes)
+          .enter()
+          .append('g')
+          .classed('gnode', true);
+
+		// Add one circle in each group
+		var node = gnodes.append("circle")
+          .attr("class", "node")
+          .attr("r", function (d) {return getRandomInt(8,18);})
+          .style("fill", function (d) { return color(d.group); })
+          .call(force.drag);
+
+		// Append the labels to each group
+		var labels = gnodes.append("text")
+          .text(function (d) { return d.name; });
+
+		force.on("tick", function () {
+		    // Update the links
+		    link.attr("x1", function (d) { return d.source.x; })
+              .attr("y1", function (d) { return d.source.y; })
+              .attr("x2", function (d) { return d.target.x; })
+              .attr("y2", function (d) { return d.target.y; });
+
+		    // Translate the groups
+		    gnodes.attr("transform", function (d) {
+		        return 'translate(' + [d.x, d.y] + ')';
+		    });
+
+		});
+
+
+		function getRandomInt(min, max) {
+		    return Math.floor(Math.random() * (max - min)) + min;
+		}
+
+
+		function zoomed() {
+		    container.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+		}
+
+		function dragstarted(d) {
+		    d3.event.sourceEvent.stopPropagation();
+		    d3.select(this).classed("dragging", true);
+		}
+
+		function dragged(d) {
+		    d3.select(this).attr("cx", d.x = d3.event.x).attr("cy", d.y = d3.event.y);
+		}
+
+		function dragended(d) {
+		    d3.select(this).classed("dragging", false);
+		}        
+
+		</script>
+        </body>
+    

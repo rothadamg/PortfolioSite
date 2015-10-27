@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+    .node {
+        stroke: #fff;
+        stroke-width: 1px;
+    }
+    
+    .node:hover {
+	    fill: #FCF4DC ;
+    }
+        
+    .link {
+        stroke: #bbb;
+        stroke-opacity: 1;
+        stroke-width: 2px;
+    }
+    
+
+    
+</style>
+<body>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script language="javascript">
+
+		var margin = {top: -5, right: -5, bottom: -5, left: -5},
+		    width = 476 - margin.left - margin.right,
+		    height = 476 - margin.top - margin.bottom;
+
+        var color = d3.scale.category20();
+		
+		
+        var palette = {
+            "lightgray": "#819090",
+            "gray": "#708284",
+            "mediumgray": "#536870",
+            "darkgray": "#475B62",
+
+            "darkblue": "#0A2933",
+            "darkerblue": "#042029",
+
+            "paleryellow": "#FCF4DC",
+            "paleyellow": "#EAE3CB",
+            "yellow": "#A57706",
+            "orange": "#BD3613",
+            "red": "#D11C24",
+            "pink": "#C61C6F",
+            "purple": "#595AB7",
+            "blue": "#2176C7",
+            "green": "#259286",
+            "yellowgreen": "#738A05"
+        }
+        
+		var nodes = [
+			{ "name": "objective", "group": 1 },
+			{ "name": "field", "group": 1 },
+			{ "name": "natural sciences", "group": 1 },
+			{ "name": "important experience", "group": 1 },
+			{ "name": "knowledge", "group": 1 },
+			{ "name": "future endeavors", "group": 1 },
+			{ "name": "related areas", "group": 2},
+			{ "name": "june 5", "group": 3 },
+			{ "name": "9451", "group": 3},
+			{ "name": "top 10", "group": 4},
+			{ "name": "class award", "group": 4},
+			{ "name": "pe student", "group": 7 },
+			{ "name": "year", "group": 7},
+			{ "name": "interests", "group":  5},
+			{ "name": "activities mr york suburban", "group":  10},
+			{ "name": "expert juggler member", "group": 6 },
+			{ "name": "university", "group": 6 },
+			{ "name": "pittsburghs juggling club football team captain", "group": 6 },
+			{ "name": "track", "group": 1 },
+			{ "name": "rookie", "group": 7 },
+			{ "name": "volunteer", "group": 8 },
+			{ "name": "student council affiliations homecoming bonfire committee", "group": 8},
+			{ "name": "assisting", "group": 9 },
+			{ "name": "eagle scout project 30 hours habitat", "group": 9 },
+			{ "name": "humanity", "group": 9 }
+			]
+			
+		var links = [
+			{"source": 0, "target": 1},
+			{"source": 1, "target": 2},
+			{"source": 2, "target": 3},
+			{"source": 3, "target": 4},
+			{"source": 4, "target": 5},
+			{"source": 5, "target": 6},
+			{"source": 7, "target": 8},
+			{"source": 9, "target": 10},
+			{"source": 11, "target": 12},
+			{"source": 13, "target": 14},
+			{"source": 15, "target": 16},
+			{"source": 16, "target": 17},
+			{"source": 18, "target": 1},
+			{"source": 19, "target": 12},
+			{"source": 20, "target": 21},
+			{"source": 22, "target": 23},
+			{"source": 23, "target": 24}
+			]
+		
+		var zoom = d3.behavior.zoom()
+	    	.scaleExtent([1, 10])
+	    	.on("zoom", zoomed);
+	    
+		var drag = d3.behavior.drag()
+	    	.origin(function(d) { return d; })
+	    	.on("dragstart", dragstarted)
+	    	.on("drag", dragged)
+    	.on("dragend", dragended);
+
+		var force = d3.layout.force()
+            .charge(-150)
+            .linkDistance(30)
+            .linkStrength(2)
+            .size([width, height]);
+
+		var circleWidth = 50
+
+		var svg = d3.select("body").append("svg")
+            .attr("width", width)
+            .attr("height", height)
+                 .call(d3.behavior.zoom().on("zoom", function () {
+                     svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")")
+                 }))
+  			.append("g")
+   			.attr("transform", "translate(" + margin.left + "," + margin.right + ")")
+   			.call(zoom);            
+
+
+		force
+            .nodes(nodes)
+            .links(links)
+            .start();
+
+		var link = svg.selectAll(".link")
+            .data(links)
+          .enter().append("line")
+            .attr("class", "link")
+            .style("stroke-width", function (d) { return Math.sqrt(d.value); });
+
+		// Create the groups under svg
+		var gnodes = svg.selectAll('g.gnode')
+          .data(nodes)
+          .enter()
+          .append('g')
+          .classed('gnode', true);
+
+		// Add one circle in each group
+		var node = gnodes.append("circle")
+          .attr("class", "node")
+          .attr("r", function (d) {return getRandomInt(8,18);})
+          .style("fill", function (d) { return color(d.group); })
+          .call(force.drag);
+        
+		// Append the labels to each group
+		var labels = gnodes.append("text")
+          .text(function (d) { return d.name; });
+
+		force.on("tick", function () {
+		    // Update the links
+		    link.attr("x1", function (d) { return d.source.x; })
+              .attr("y1", function (d) { return d.source.y; })
+              .attr("x2", function (d) { return d.target.x; })
+              .attr("y2", function (d) { return d.target.y; });
+
+		    // Translate the groups
+		    gnodes.attr("transform", function (d) {
+		        return 'translate(' + [d.x, d.y] + ')';
+		    });
+
+		});
+
+
+		function getRandomInt(min, max) {
+		    return Math.floor(Math.random() * (max - min)) + min;
+		}
+
+
+		function zoomed() {
+		    container.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+		}
+
+		function dragstarted(d) {
+		    d3.event.sourceEvent.stopPropagation();
+		    d3.select(this).classed("dragging", true);
+		}
+
+		function dragged(d) {
+		    d3.select(this).attr("cx", d.x = d3.event.x).attr("cy", d.y = d3.event.y);
+		}
+
+		function dragended(d) {
+		    d3.select(this).classed("dragging", false);
+		}        
+
+		</script>
+        </body>
+    
